@@ -1,0 +1,215 @@
+@mixin flex-vertical {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@mixin normal-pattern {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+@mixin title-1 {
+  font-size: 2em;
+  color: black;
+}
+
+@mixin text-center {
+  text-align: center;
+}
+
+@mixin background-color-dark {
+  background-color: rgb(14, 14, 14);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: rgb(241, 241, 241);
+  color: black;
+  font-size: 16px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+body {
+  header {
+    @include flex-vertical;
+    @include background-color-dark;
+    height: 3.4rem;
+
+    nav {
+      ul {
+        @include flex-vertical;
+        @include normal-pattern;
+
+        li {
+          @include normal-pattern;
+
+          a {
+            @include normal-pattern;
+            margin: 0 0.5em;
+            font-size: 1.2em;
+            padding: 1em 0.4em;
+
+            &:hover {
+              background-color: rgb(39, 39, 39);
+            }
+          }
+        }
+      }
+    }
+
+    .title-blog {
+      @include normal-pattern;
+      font-size: 1.9em;
+      color: rgb(84, 6, 139);
+      margin: 0 1em;
+      font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
+      font-weight: 600;
+    }
+  }
+
+  .banner-index {
+    background-image: url("../img/banner-model.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 400px;
+
+    @include flex-vertical;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .title-index {
+    @include title-1;
+    @include text-center;
+    margin-bottom: 1em;
+
+    &:hover {
+      animation: action1 4s infinite;
+    }
+  }
+
+  .title-2-index {
+    @include text-center;
+    @include title-1;
+    font-size: 1.8em;
+    margin-top: 2em;
+  }
+
+  .title-3-index {
+    @include text-center;
+    font-size: 1.3em;
+    text-decoration: underline;
+
+    a:hover {
+      cursor: pointer;
+      color: rgb(61, 61, 61);
+    }
+  }
+
+  .title-blog {
+    @include text-center;
+    @include title-1;
+  }
+
+  .posts-index {
+    @include normal-pattern;
+    @include flex-vertical;
+    flex-direction: column;
+
+    li {
+      @include normal-pattern;
+      width: 60%;
+      margin: 1em 0;
+    }
+  }
+
+  .divider {
+    width: 70%;
+    border: rgb(160, 160, 160) 1px solid;
+  }
+
+  .image {
+    margin: 0 3em;
+    border: black 1px solid;
+    border-radius: 10px 10px;
+    padding: 1em;
+    background-color: rgb(250, 250, 250);
+  }
+
+  p {
+    @include text-center;
+  }
+
+  footer {
+    @include background-color-dark;
+    @include text-center;
+    @include flex-vertical;
+    color: white;
+    margin-top: 15em;
+    padding: 2em 0;
+    justify-content: center;
+
+    a {
+      color: white;
+      margin: 0;
+      @include normal-pattern;
+      @include flex-vertical;
+      justify-content: center;
+
+      img {
+        height: 2em;
+        background-color: white;
+        border-radius: 50%;
+        padding: 0.1em;
+        margin: 0 1em;
+      }
+    }
+  }
+
+  .content-post {
+    margin-bottom: 21rem;
+  }
+}
+
+// Marcação para links selecionados
+.current-page {
+  color: white;
+}
+
+.marked-link {
+  background-color: rgb(39, 39, 39);
+}
+
+@keyframes action1 {
+  50% {
+    transform: scale(1.5);
+  }
+}
+
+@media (max-width: 740px) {
+  body {
+    header {
+      flex-direction: column;
+      height: 6.7rem;
+
+      .title-blog{
+        margin: 0.3em 0;
+      }
+    }
+    footer {
+      flex-direction: column;
+    }
+  }
+
+  .image {
+    margin: 0;
+    height: 250px;
+  }
+}
